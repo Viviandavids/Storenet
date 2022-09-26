@@ -22,11 +22,13 @@
         android:name="com.example.storenet.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.example.storenet.ui.account.AccountFragment"
         android:label="@string/title_account"
         tools:layout="@layout/account_fragment" />
+
     <fragment
         android:id="@+id/navigation_favourites"
         android:name="com.example.storenet.ui.favourites.FavoritesFragment"
