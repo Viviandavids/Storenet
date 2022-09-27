@@ -1,10 +1,10 @@
 package com.example.storenet.data.models
 
 data class Products(
-    val image: String,
-    val name: String,
-    val price: Double,
-    val seller: String,
-    val size: String,
-    val uid: String,
+    var uid: String? = null,
+    var image: String? = null,
+    var name: String? = null,
+    var price: Double = 0.0,
+    var seller: String? = null,
+    var size: String? = null,
 )
