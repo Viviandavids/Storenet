@@ -2,12 +2,12 @@ package com.example.storenet.ui.home
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.storenet.R
 import com.example.storenet.databinding.FragmentHomeBinding
 
@@ -35,8 +35,10 @@ class HomeFragment : Fragment() {
         menuHost.addMenuProvider(HomeMenuProvider(), viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         // Listen for products
-        homeViewModel.getAllProducts().observe(viewLifecycleOwner){
-            Toast.makeText(requireContext(), "Number of products ${it.size}", Toast.LENGTH_LONG).show()
+        homeViewModel.getAllProducts().observe(viewLifecycleOwner){ listOfFetchedProducts ->
+            binding.listOfProducts.layoutManager = GridLayoutManager(requireContext(),2)
+            binding.listOfProducts.adapter = ProductsAdapter(requireContext(), listOfFetchedProducts, childFragmentManager)
+
         }
     }
 
