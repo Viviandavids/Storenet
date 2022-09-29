@@ -1,7 +1,6 @@
 package com.example.storenet.ui.home
 
 import android.content.Context
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +38,7 @@ class ProductsAdapter(
 
         // set onClick listener to the item
         holder.itemView.setOnClickListener {
-            ProductDetailsFragment().show(fragmentManager, "Tag")
+            ProductDetailsFragment(products).show(fragmentManager, "Tag")
 
         }
     }
