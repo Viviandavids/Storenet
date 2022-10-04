@@ -4,18 +4,14 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import com.example.storenet.data.models.Products
+import com.example.storenet.data.repository.CartRepository
 
-class ProductDetailsViewModel(application: Application): AndroidViewModel(application) {
-    private val context: Context = application.applicationContext
+class ProductDetailsViewModel(): ViewModel() {
 
-    fun saveToCart(uid: String){
-        // access the sharedPreference
-        val sharedPreferences: SharedPreferences = context.getSharedPreferences("Cart", Context.MODE_PRIVATE)
+    fun saveToCart(products: Products){
+        CartRepository.addToCart(products)
 
-        // get access to the editor
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-
-        // save the uid
-        editor.putString(uid, "")
     }
 }

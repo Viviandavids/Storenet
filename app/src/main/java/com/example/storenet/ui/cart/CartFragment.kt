@@ -5,38 +5,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.storenet.databinding.FragmentCartBinding
 
 class CartFragment : Fragment() {
-
-    private var _binding: FragmentCartBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var cartViewModel:CartViewModel
+    private lateinit var binding: FragmentCartBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val cartViewModel =
-            ViewModelProvider(this).get(CartViewModel::class.java)
+        cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
 
-        _binding = FragmentCartBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding = FragmentCartBinding.inflate(inflater, container, false)
 
-        val textView: TextView = binding.textCart
-        cartViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var productInCart = cartViewModel.getProducts()
+        Toast.makeText(requireContext(), "There are ${productInCart.size} in cart", Toast.LENGTH_LONG).show()
     }
+
 }

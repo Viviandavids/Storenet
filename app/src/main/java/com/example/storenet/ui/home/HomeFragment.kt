@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    class HomeMenuProvider(): MenuProvider {
+    class HomeMenuProvider: MenuProvider {
         override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
             // Add menu items here
             menuInflater.inflate(R.menu.home_menu, menu)
