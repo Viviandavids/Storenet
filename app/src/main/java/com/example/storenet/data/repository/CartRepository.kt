@@ -8,6 +8,9 @@ object CartRepository {
     fun addToCart(product: Products){
         selectedProducts.put(product, 1)
     }
+    fun getQuantity(product: Products): Int{
+        return selectedProducts[product]!!
+    }
 
     fun increaseQuantity(product: Products){
         // Increment quantity
