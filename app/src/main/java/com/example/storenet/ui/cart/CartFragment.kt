@@ -31,14 +31,28 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        cartViewModel.getCartLiveData().observe(viewLifecycleOwner){
+            initializeRecyclerView()
+            showPriceOnCheckoutButton()
+        }
+        binding.checkout.setOnClickListener{
 
+        }
+
+    }
+
+    private fun showPriceOnCheckoutButton() {
+        var price = cartViewModel.getPrice()
+       binding.checkout.text = "Checkout ($$price)"
+    }
+
+    private fun initializeRecyclerView(){
         binding.itemsInCart.layoutManager = LinearLayoutManager(requireContext())
         binding.itemsInCart.adapter = CartAdapter(requireContext(), cartViewModel)
 
         // Add line separator
         var dividerItemDecoration = DividerItemDecoration(requireContext(), RecyclerView.VERTICAL)
         binding.itemsInCart.addItemDecoration(dividerItemDecoration)
-
 
     }
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.storenet.R
@@ -35,7 +36,29 @@ class CartAdapter(val context: Context, var cartViewModel: CartViewModel): Recyc
             .into(holder.image)
 
         // show quantity
-        holder.quantity.text = cartViewModel.getQuantity(product).toString()
+        var quantity = cartViewModel.getQuantity(product)
+        holder.quantity.text = quantity.toString()
+
+        // Remove item from cart
+        holder.deleteBtn.setOnClickListener{
+            cartViewModel.removeFromCart(product)
+            Toast.makeText(context, "${product.brand} Deleted Successfully", Toast.LENGTH_LONG).show()
+        }
+
+        // Increase quantity
+        holder.increaseQty.setOnClickListener{
+            cartViewModel.increaseQuantity(product)
+        }
+
+        // Decrease quantity
+        holder.decreaseQty.setOnClickListener{
+            val quantity = quantity
+            cartViewModel.decreaseQuantity(product)
+        }
+        disableButtonIfQtyIs1(quantity, holder.decreaseQty)
+    }
+    private fun disableButtonIfQtyIs1(quantity: Int, button: MaterialButton){
+       button.isEnabled = quantity > 1
     }
 
     override fun getItemCount(): Int = listOfSelectedProducts.size
@@ -48,5 +71,5 @@ class CartViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     val quantity: TextView = itemView.findViewById(R.id.quantity)
     val decreaseQty: MaterialButton = itemView.findViewById(R.id.decrease_quantity)
     val increaseQty: MaterialButton = itemView.findViewById(R.id.increase_quantity)
-    val deleteQty: MaterialButton = itemView.findViewById(R.id.delete)
+    val deleteBtn: MaterialButton = itemView.findViewById(R.id.delete)
 }

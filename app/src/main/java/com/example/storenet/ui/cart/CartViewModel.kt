@@ -20,10 +20,17 @@ class CartViewModel : ViewModel() {
     }
 
     fun decreaseQuantity(product: Products){
-       CartRepository.reduceQuantity(product)
+       CartRepository.decreaseQuantity(product)
     }
 
-    fun deleteProduct(product: Products){
+    fun removeFromCart(product: Products){
        CartRepository.removeFromCart(product)
+    }
+
+    fun getCartLiveData(): MutableLiveData<MutableMap<Products, Int>> {
+        return CartRepository.getCartLiveData()
+    }
+    fun getPrice(): Double{
+        return CartRepository.getPrice()
     }
 }
