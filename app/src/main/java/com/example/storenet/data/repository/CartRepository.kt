@@ -19,7 +19,6 @@ object CartRepository {
         var quantity: Int = selectedProducts[product]!!
         quantity++
         selectedProducts[product] = quantity
-
        notifyValueChange()
     }
 
@@ -27,7 +26,6 @@ object CartRepository {
         var quantity: Int = selectedProducts[product]!!
         quantity--
         selectedProducts[product] = quantity
-
         notifyValueChange()
     }
 
@@ -36,8 +34,8 @@ object CartRepository {
     }
 
     fun removeFromCart(product: Products){
-        notifyValueChange()
         selectedProducts.remove(product)
+        notifyValueChange()
     }
 
     fun getPrice(): Double{

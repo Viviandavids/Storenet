@@ -11,8 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Storenet">
         <activity
-            android:name=".ui.productDetails.ProductDetailsActivity"
-            android:exported="false" />
+            android:name=".ui.cart.CheckoutActivity"
+            android:exported="false"
+            android:label="Checkout"/>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

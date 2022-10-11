@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".ui.cart.CheckoutActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Info"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subtotal"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:id="@+id/shipping_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shipping Cost"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtotal"/>
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shipping_cost"/>
+        <TextView
+            android:id="@+id/subtotal_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$800.0"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/shp_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$12.0"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/subtotal_cost"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/total_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$812.0"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/shp_cost"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment method"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Spinner
+            android:id="@+id/card_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <EditText
+            android:id="@+id/card_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_name"
+            android:hint="Card Numbers"
+            android:inputType="number"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            android:id="@+id/card_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/card_number"
+            android:hint="Expiry date"
+            android:inputType="date"
+
+            app:layout_constraintStart_toStartOf="parent"/>
+        <EditText
+            android:id="@+id/cvv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Cvv"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@id/card_number"
+            app:layout_constraintStart_toEndOf="@id/card_date"
+            app:layout_constraintTop_toTopOf="@id/card_date"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/cornflower_blue"
+        android:text="make Payment"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

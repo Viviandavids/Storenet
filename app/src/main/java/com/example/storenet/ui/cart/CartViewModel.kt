@@ -15,6 +15,7 @@ class CartViewModel : ViewModel() {
     fun getQuantity(product: Products): Int{
         return CartRepository.getQuantity(product)
     }
+
     fun increaseQuantity(product: Products){
        CartRepository.increaseQuantity(product)
     }

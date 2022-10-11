@@ -14,8 +14,8 @@ import com.example.storenet.data.models.Products
 import com.google.android.material.button.MaterialButton
 
 
-class CartAdapter(val context: Context, var cartViewModel: CartViewModel): RecyclerView.Adapter<CartViewHolder>(){
-    val listOfSelectedProducts: List<Products> = cartViewModel.getProducts()
+class CartAdapter(private val context: Context, var cartViewModel: CartViewModel): RecyclerView.Adapter<CartViewHolder>(){
+    private val listOfSelectedProducts: List<Products> = cartViewModel.getProducts()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
        val itemView = LayoutInflater.from(context).inflate(R.layout.layout_cart, parent, false)
