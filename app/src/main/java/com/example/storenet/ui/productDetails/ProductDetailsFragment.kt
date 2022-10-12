@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.storenet.R
 import com.example.storenet.data.models.Products
 import com.example.storenet.databinding.FragmentProductDetailsListDialogBinding
 
@@ -49,6 +50,9 @@ class ProductDetailsFragment(val product: Products) : BottomSheetDialogFragment(
 
             // Close Bottom sheet
             this.dismiss()
+        }
+        binding.selectAsFavourite.setOnClickListener {
+            binding.selectAsFavourite.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
         }
     }
 }

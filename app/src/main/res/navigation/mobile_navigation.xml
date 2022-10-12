@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="com.example.storenet.ui.favourites.FavoritesFragment"
+        android:name="com.example.storenet.ui.favorites.FavoritesFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/favorites_fragment" />
 

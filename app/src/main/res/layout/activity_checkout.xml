@@ -78,7 +78,7 @@
         android:text="Payment method"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="30dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -87,32 +87,34 @@
             android:id="@+id/card_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
         <EditText
             android:id="@+id/card_number"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/card_name"
+            app:layout_constraintTop_toBottomOf="@id/card_name"
             android:hint="Card Numbers"
             android:inputType="number"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_marginStart="10dp"/>
         <EditText
             android:id="@+id/card_date"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/card_number"
-            android:hint="Expiry date"
+            android:hint="MM/YY"
             android:inputType="date"
-
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"/>
         <EditText
             android:id="@+id/cvv"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="Cvv"
             android:inputType="number"
+            android:layout_marginStart="5dp"
             app:layout_constraintTop_toBottomOf="@id/card_number"
             app:layout_constraintStart_toEndOf="@id/card_date"
             app:layout_constraintTop_toTopOf="@id/card_date"/>
@@ -121,6 +123,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/make_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/cornflower_blue"

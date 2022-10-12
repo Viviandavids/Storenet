@@ -34,4 +34,7 @@ class CartViewModel : ViewModel() {
     fun getPrice(): Double{
         return CartRepository.getPrice()
     }
+    fun clearCart(){
+        CartRepository.clearCart()
+    }
 }

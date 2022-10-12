@@ -1,4 +1,4 @@
-package com.example.storenet.ui.favourites
+package com.example.storenet.ui.favorites
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

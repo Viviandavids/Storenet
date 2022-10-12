@@ -28,7 +28,7 @@ object CartRepository {
         selectedProducts[product] = quantity
         notifyValueChange()
     }
-
+    // update all observers that the data has change
     private fun notifyValueChange() {
         cartLiveData.value = selectedProducts
     }
@@ -52,5 +52,11 @@ object CartRepository {
     }
     fun getCartLiveData(): MutableLiveData<MutableMap<Products, Int>>{
         return cartLiveData
+    }
+
+    fun clearCart(){
+        selectedProducts.clear()
+
+        notifyValueChange()
     }
 }
