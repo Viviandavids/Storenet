@@ -6,27 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storenet.R
+import com.example.storenet.databinding.FavoritesFragmentBinding
 
 class FavoritesFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = FavoritesFragment()
-    }
-
+    private lateinit var fragmentFavoritesBinding: FavoritesFragmentBinding
     private lateinit var viewModel: FavoritesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.favorites_fragment, container, false)
+        viewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
+        fragmentFavoritesBinding = FavoritesFragmentBinding.inflate(inflater, container, false)
+        return fragmentFavoritesBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+       viewModel.getAllFavoriteProducts().observe(viewLifecycleOwner){listOfIds ->
+           fragmentFavoritesBinding.listOfFavorites.layoutManager = LinearLayoutManager(requireContext())
+           fragmentFavoritesBinding.listOfFavorites.adapter = FavoritesAdapter(requireContext())
+       }
     }
+
 
 }

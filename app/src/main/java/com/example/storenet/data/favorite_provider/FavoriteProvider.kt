@@ -1,5 +1,7 @@
 package com.example.storenet.data.favorite_provider
 
+import androidx.lifecycle.MutableLiveData
+
 interface FavoriteProvider {
     fun addFavorite(productId: String)
 
@@ -7,5 +9,6 @@ interface FavoriteProvider {
 
     fun isFavorite(productId: String): Boolean
 
-    fun getFavoriteItems(): List<String>
+    fun getFavoriteItems(): MutableLiveData<List<String>>
+
 }

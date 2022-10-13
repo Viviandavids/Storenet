@@ -29,6 +29,7 @@ class CheckoutActivity : AppCompatActivity() {
         // Setup spinner showing card providers
         setupSpinner()
 
+
         binding.makePayment.setOnClickListener{
             if(inputIsValid()){
             showPaymentSuccessDialog()
@@ -40,9 +41,11 @@ class CheckoutActivity : AppCompatActivity() {
     private fun inputIsValid(): Boolean {
         val cardNumber = binding.cardNumber.text.toString()
         val cvv = binding.cvv.text.toString()
-        val expiryDate = binding.cardDate.text.toString().substringAfterLast("/").toInt()
 
-        if(cardNumber.length < 15 || cardNumber.length > 16){
+        if(cardNumber.length < 15){
+            Toast.makeText(this, "Invalid card number", Toast.LENGTH_LONG).show()
+            return false
+        } else if (cardNumber.length > 16){
             Toast.makeText(this, "Invalid card number", Toast.LENGTH_LONG).show()
             return false
         } else if(cvv.length != 3){

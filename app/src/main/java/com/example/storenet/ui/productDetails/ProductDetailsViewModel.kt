@@ -11,6 +11,7 @@ import com.example.storenet.data.repository.CartRepository
 class ProductDetailsViewModel(): ViewModel() {
 
     fun saveToCart(products: Products){
+        // add product to repository
         CartRepository.addToCart(products)
 
     }
