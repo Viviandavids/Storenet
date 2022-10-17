@@ -3,6 +3,7 @@ package com.example.storenet.ui.favorites
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.storenet.data.models.Products
 import com.example.storenet.data.repository.FavoriteRepository
 
 class FavoritesViewModel(application: Application) : AndroidViewModel(application) {
@@ -21,5 +22,8 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
   }
     fun getAllFavoriteProducts(): MutableLiveData<List<String>>{
         return favoriteRepository.getAllFavorites()
+    }
+    fun getProductFromIds(listOfIds: List<String>): MutableLiveData<List<Products>>{
+        return favoriteRepository.getProductFromIds(listOfIds)
     }
 }

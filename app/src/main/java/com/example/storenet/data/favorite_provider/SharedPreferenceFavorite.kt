@@ -16,14 +16,14 @@ class SharedPreferenceFavorite(context: Context): FavoriteProvider {
 
     override fun addFavorite(productId: String) {
        editor.putString(productId, productId)
-        editor.apply()
+        editor.commit()
 
         notifyObservers()
     }
 
     override fun removeFavorite(productId: String) {
        editor.remove(productId)
-        editor.apply()
+        editor.commit()
 
         notifyObservers()
     }
@@ -37,6 +37,7 @@ class SharedPreferenceFavorite(context: Context): FavoriteProvider {
     }
 
     override fun getFavoriteItems(): MutableLiveData<List<String>> {
+        notifyObservers()
        return liveData
     }
     private fun notifyObservers(){
