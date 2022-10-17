@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/not_found"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/notfound"
+        android:src="@drawable/nofavorite"
         android:visibility="gone"/>
 
 </LinearLayout>
