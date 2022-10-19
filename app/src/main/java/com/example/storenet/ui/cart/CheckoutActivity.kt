@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.storenet.R
+import com.example.storenet.data.models.Notification
 import com.example.storenet.data.models.Products
 import com.example.storenet.databinding.ActivityCheckoutBinding
 import java.util.Calendar
@@ -82,7 +83,9 @@ class CheckoutActivity : AppCompatActivity() {
     }
 
     private fun saveNotification(message: String) {
+        val notification = Notification(System.currentTimeMillis(), message)
 
+        cartViewModel.saveNotification(notification)
     }
 
     private fun inputIsValid(): Boolean {

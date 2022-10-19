@@ -14,4 +14,8 @@ class NotificationsViewModel(application: Application) : AndroidViewModel(applic
 fun getAllNotification(): MutableList<Notification> {
     return repo.getAllNotifications()
     }
+
+    fun deleteNotification(notification: Notification){
+        repo.deleteNotification(notification)
+    }
 }
